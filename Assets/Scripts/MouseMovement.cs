@@ -23,6 +23,7 @@ public class MouseMovement : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
