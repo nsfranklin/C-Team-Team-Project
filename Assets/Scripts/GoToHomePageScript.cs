@@ -25,7 +25,8 @@ public class GoToHomePageScript : MonoBehaviour {
         {
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {
-                SceneManager.LoadScene("Home Scene");
+                //SceneManager.LoadScene("Home Scene");
+                Initiate.Fade("Home Scene", Color.black, 2.0f);  //This will change the scene using Fade to black animation!!!
                 OnClick.Invoke();
             }
         }

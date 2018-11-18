@@ -26,8 +26,10 @@ public class OpenProductPageScript : MonoBehaviour {
         {
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {
-                SceneManager.LoadScene("Product Scene");
+                //SceneManager.LoadScene("Product Scene");
+                Initiate.Fade("Product Scene", Color.black, 2.0f);  //This will change the scene using Fade to black animation!!!
                 OnClick.Invoke();
+
             }
         }
     }
