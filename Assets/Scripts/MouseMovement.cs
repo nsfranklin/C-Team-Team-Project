@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseMovement : MonoBehaviour {
-
+    /*
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityX = 15F;
@@ -141,10 +141,10 @@ public class MouseMovement : MonoBehaviour {
             }
         }
         return Mathf.Clamp(angle, min, max);
-    }
+    }*/
 
 
-    /* public Transform target;
+     public Transform target;
      public float distance = 5.0f;
      public float xSpeed = 120.0f;
      public float ySpeed = 120.0f;
@@ -211,5 +211,4 @@ public class MouseMovement : MonoBehaviour {
              angle -= 360F;
          return Mathf.Clamp(angle, min, max);
      }
-     */
 }
