@@ -1347,9 +1347,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 24.5
+  field of view: 32.2
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 200
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1372,7 +1372,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1599032508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 509, y: 186, z: -254}
+  m_LocalPosition: {x: 509, y: 228, z: -254}
   m_LocalScale: {x: 3.75, y: 0.4853959, z: 3.75}
   m_Children: []
   m_Father: {fileID: 0}
