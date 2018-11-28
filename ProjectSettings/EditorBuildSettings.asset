@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Product Description.unity
     guid: 598deffea0546fe47a50df72ce1a65db
+  - enabled: 1
+    path: Assets/Scenes/Basket Scene.unity
+    guid: e73c8637367bbdf4cb2dc2c8a5354b21
   m_configObjects: {}
