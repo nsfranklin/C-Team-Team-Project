@@ -5,10 +5,11 @@ using UnityEngine;
 public class RaycastScript : MonoBehaviour
 {
 
-
     // Update is called once per frame
     void Update()
     {
+        OVRInput.Update();
+        OVRInput.FixedUpdate();
         RaycastHit hit;
         float theDistance;
 
@@ -18,5 +19,8 @@ public class RaycastScript : MonoBehaviour
         if (Physics.Raycast(transform.position, (forward), out hit)) ;
         theDistance = hit.distance;
         print(theDistance + " " + hit.collider.gameObject.name);
+
+        if (OVRInput.Get(OVRInput.Button.One))
+            print("Oculus Remote Button One");
     }
 }

@@ -23,6 +23,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/socials.unity
     guid: 51714753ef55dc547ad07b59f739273f
+  - enabled: 1
+    path: Assets/Scenes/Basket Scene.unity
+    guid: e73c8637367bbdf4cb2dc2c8a5354b21
+  - enabled: 1
+    path: Assets/Scenes/GameManager.unity
+    guid: e627d1a8d9f071e4eb16cedefd869c67
+  - enabled: 1
+    path: Assets/Scenes/Home Scene.unity
+    guid: 1ddde381eb674da44853fcd9fef5a087
+  - enabled: 1
+    path: Assets/Scenes/Product Description.unity
+    guid: 598deffea0546fe47a50df72ce1a65db
+  - enabled: 1
+    path: Assets/Scenes/Product Scene.unity
+    guid: 575178c035fb2834fa3f07b2ae0ac10f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 490c302f10cb0664799bf952ed1e7c1d,
       type: 2}

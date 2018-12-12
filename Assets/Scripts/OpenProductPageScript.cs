@@ -19,10 +19,12 @@ public class OpenProductPageScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        OVRInput.Update();
+        OVRInput.FixedUpdate();
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit Hit;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || OVRInput.Get(OVRInput.Button.One))
         {
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {
@@ -32,5 +34,7 @@ public class OpenProductPageScript : MonoBehaviour {
 
             }
         }
+
+     
     }
 }
