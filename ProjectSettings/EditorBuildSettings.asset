@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/login.unity
     guid: cb33757ece7a8ec4a996c1f2a5d136d1
   - enabled: 1
-    path: Assets/Scenes/vr headset.unity
+    path: Assets/Scenes/MountHeadsetPrompt.unity
     guid: 66cb3c51e9c85a140967a2871dd1d0be
   - enabled: 1
     path: Assets/Scenes/sign up.unity
