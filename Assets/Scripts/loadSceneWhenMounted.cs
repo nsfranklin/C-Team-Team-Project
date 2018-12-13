@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class loadingSceneMaskOn : MonoBehaviour {
+public class loadSceneWhenMounted : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-     
+    // Use this for initialization
+    void Start()
+    {
+
     }
 
     void Update()
