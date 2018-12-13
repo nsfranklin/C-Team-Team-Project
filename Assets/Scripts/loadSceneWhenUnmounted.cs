@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class loadSceneWhenMounted : MonoBehaviour
+public class loadSceneWhenUnmounted : MonoBehaviour
 {
     public string SceneToLoad;
     // Use this for initialization
@@ -14,10 +14,10 @@ public class loadSceneWhenMounted : MonoBehaviour
 
     void Update()
     {
-        if (OVRPlugin.hasVrFocus && OVRPlugin.hasInputFocus)
+        if (!(OVRPlugin.hasVrFocus && OVRPlugin.hasInputFocus))
         {
             SceneManager.LoadScene(SceneToLoad);
-            print("focus gained");
+            print("focus lost");
         }
     }
 }
