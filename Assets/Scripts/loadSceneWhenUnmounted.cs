@@ -11,7 +11,7 @@ public class loadSceneWhenUnmounted : MonoBehaviour
     {
 
     }
-
+    /*
     void Update()
     {
         if (!(OVRPlugin.hasVrFocus && OVRPlugin.hasInputFocus))
@@ -20,4 +20,5 @@ public class loadSceneWhenUnmounted : MonoBehaviour
             print("focus lost");
         }
     }
+    */
 }
