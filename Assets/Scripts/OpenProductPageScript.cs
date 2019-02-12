@@ -19,6 +19,8 @@ public class OpenProductPageScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        DatabaseConnection dbConnection= new DatabaseConnection();
+
         OVRInput.Update();
         OVRInput.FixedUpdate();
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -30,6 +32,7 @@ public class OpenProductPageScript : MonoBehaviour {
             {
                 //SceneManager.LoadScene("Product Scene");
                 Initiate.Fade("Product Scene", Color.black, 2.0f);  //This will change the scene using Fade to black animation!!!
+                //dbConnection.openDatabaseConnection();
                 OnClick.Invoke();
 
             }

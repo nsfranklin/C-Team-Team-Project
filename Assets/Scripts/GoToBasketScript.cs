@@ -20,6 +20,7 @@ public class GoToBasketScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //DatabaseConnection dbConnection = new DatabaseConnection();
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit Hit;
 
@@ -29,6 +30,7 @@ public class GoToBasketScript : MonoBehaviour
             {
                 //SceneManager.LoadScene("Product Scene");
                 Initiate.Fade("Basket Scene", Color.black, 2.0f);  //This will change the scene using Fade to black animation!!!
+               // dbConnection.openDatabaseConnection();
                 OnClick.Invoke();
 
             }
