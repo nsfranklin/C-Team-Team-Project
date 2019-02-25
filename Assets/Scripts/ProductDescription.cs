@@ -10,8 +10,10 @@ using UnityEngine.UI;
 
 public class ProductDescription : MonoBehaviour
 {
+    public Text userIdText;
+
     public Text listingIdtext;
-    //public Text sellerIdtext;
+    public Text sellerIdtext;
     public Text priceText;
     public Text nameText;
     public Text descriptionText;
@@ -40,14 +42,14 @@ public class ProductDescription : MonoBehaviour
             connection.Open();
             print("Connection opened! ");
 
-            string query = "select * from cTeamTeamProjectDatabase.Product where ListingID=1";
+            string query = "select * from cTeamTeamProjectDatabase.Product where ListingID=5";
             command = new MySqlCommand(query, connection);
             read = command.ExecuteReader();
 
             while (read.Read())
             {
                 listingIdtext.text = read.GetValue(0).ToString();
-                //sellerIdtext.text = read.GetValue(1).ToString();
+                sellerIdtext.text = read.GetValue(1).ToString();
                 priceText.text = read.GetValue(2).ToString();
                 nameText.text = read.GetValue(3).ToString();
                 descriptionText.text = read.GetValue(4).ToString();
@@ -81,21 +83,54 @@ public class ProductDescription : MonoBehaviour
         string query = "insert into cTeamTeamProjectDatabase.Basket (UserID,ProductID) values("+listingIdtext.text+","+priceText.text+")";
         command = new MySqlCommand(query, connection);
         read = command.ExecuteReader();
-
-       /* while (read.Read())
-        {
-            basketProductNameTxt.text = read.GetValue(0).ToString();
-            basketProductPriceTxt.text = read.GetValue(1).ToString();
-        }*/
         }
         catch (MySqlException exception)
          {
             print("Error" + exception.ToString());
          }
 
-connection.Close();
+        connection.Close();
         print("Connection closed! ");
+    }
 
- 
+    //METHOD WHICH REGISTER AN ORDER FROM BASKET GUI INTO DATABASE TABLE--
+    public void proceedWithOrder()
+    {
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,OrderID,SellerID,ProductID,OrderState,isOpen)VALUES("+userIdText.text+",2,"+sellerIdtext.text+","+listingIdtext.text+",0,1); ";
+            command = new MySqlCommand(query, connection);
+            read = command.ExecuteReader();
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+        print("Connection closed! Order processed.");
+    }
+
+    public void removeFromBasket()
+    {
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "delete from cTeamTeamProjectDatabase.Basket where ProductID ="+priceText.text+";)";
+            command = new MySqlCommand(query, connection);
+            read = command.ExecuteReader();
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+        print("Connection closed! TEEESTTTT ");
     }
 }

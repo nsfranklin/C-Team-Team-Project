@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 24384482}
   - component: {fileID: 24384481}
   - component: {fileID: 24384480}
+  - component: {fileID: 24384483}
   m_Layer: 5
   m_Name: view3Dbtn
   m_TagString: Untagged
@@ -172,8 +173,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 0.39143598, b: 0.0047169924, a: 1}
-    m_HighlightedColor: {r: 0.9811321, g: 0.013883919, b: 0.013883919, a: 0.42745098}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_HighlightedColor: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0.42745098}
+    m_PressedColor: {r: 0.9058824, g: 0.90196085, b: 0.90196085, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -190,7 +191,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 24384481}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 24384483}
+        m_MethodName: sceneTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &24384481
@@ -230,6 +242,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24384478}
   m_CullTransparentMesh: 0
+--- !u!114 &24384483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24384478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f292bb9fb2c7a44910bd9b36348451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &194529883
 GameObject:
   m_ObjectHideFlags: 0
