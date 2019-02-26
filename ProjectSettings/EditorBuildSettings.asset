@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3DObjectScene.unity
     guid: 49ff9113025f8fc4c84de9973993f254
+  - enabled: 1
+    path: Assets/Scenes/OrdersScene.unity
+    guid: 812ded0d9bbf13f4faae8fef17982c3d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 490c302f10cb0664799bf952ed1e7c1d,
       type: 2}

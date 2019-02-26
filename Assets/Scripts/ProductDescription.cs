@@ -10,10 +10,10 @@ using UnityEngine.UI;
 
 public class ProductDescription : MonoBehaviour
 {
-    public Text userIdText;
+    //public Text userIdText;
 
     public Text listingIdtext;
-    public Text sellerIdtext;
+    //public Text sellerIdtext;
     public Text priceText;
     public Text nameText;
     public Text descriptionText;
@@ -30,10 +30,23 @@ public class ProductDescription : MonoBehaviour
    // public Text basketProductNameTxt;
     //public Text basketProductPriceTxt;
 
- public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
+    
+
+        public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
         MySqlCommand command;
         MySqlConnection connection = new MySqlConnection(db_connection);
         MySqlDataReader read;
+
+
+    void Start()
+    {
+        getData();       
+    }
+
+    void Update()
+    {
+
+    }
 
     public void getData()
     {
@@ -41,15 +54,16 @@ public class ProductDescription : MonoBehaviour
         {
             connection.Open();
             print("Connection opened! ");
-
-            string query = "select * from cTeamTeamProjectDatabase.Product where ListingID=5";
+            string query = "select * from cTeamTeamProjectDatabase.Product where ListingID=@listingID;";
             command = new MySqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@listingID", GameManager.selectedListingID);
             read = command.ExecuteReader();
 
             while (read.Read())
             {
                 listingIdtext.text = read.GetValue(0).ToString();
-                sellerIdtext.text = read.GetValue(1).ToString();
+                //sellerIdtext.text = read.GetValue(1).ToString();
                 priceText.text = read.GetValue(2).ToString();
                 nameText.text = read.GetValue(3).ToString();
                 descriptionText.text = read.GetValue(4).ToString();
@@ -91,27 +105,6 @@ public class ProductDescription : MonoBehaviour
 
         connection.Close();
         print("Connection closed! ");
-    }
-
-    //METHOD WHICH REGISTER AN ORDER FROM BASKET GUI INTO DATABASE TABLE--
-    public void proceedWithOrder()
-    {
-        try
-        {
-            connection.Open();
-            print("Connection opened! ");
-
-            string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,OrderID,SellerID,ProductID,OrderState,isOpen)VALUES("+userIdText.text+",2,"+sellerIdtext.text+","+listingIdtext.text+",0,1); ";
-            command = new MySqlCommand(query, connection);
-            read = command.ExecuteReader();
-        }
-        catch (MySqlException exception)
-        {
-            print("Error" + exception.ToString());
-        }
-
-        connection.Close();
-        print("Connection closed! Order processed.");
     }
 
     public void removeFromBasket()

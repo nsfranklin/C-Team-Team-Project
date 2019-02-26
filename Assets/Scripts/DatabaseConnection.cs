@@ -12,9 +12,11 @@ public class DatabaseConnection : MonoBehaviour
     private static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
     private MySqlConnection connection = new MySqlConnection(db_connection);
 
-    public void openConnection()
+    public MySqlConnection openConnection()
     {
         connection.Open();
+
+        return connection;
     }
 
     public void closeDatabaseConnection()

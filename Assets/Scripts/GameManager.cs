@@ -4,42 +4,30 @@ using UnityEngine;
 using MySql.Data.MySqlClient;
 using MySql;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
-    public static GameManager instance = null;
-    // Use this for initialization
+    //private static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
+    //private MySqlConnection connection;
+
+    public static GameManager instance;
+    public static string selectedListingID = "18";
+    public static string sellerId = "9";
+    public static string loginUserID = "7";
+    public static string modelToLoad;
+
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
+            DontDestroyOnLoad(gameObject);
             instance = this;
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
+    }
 
-        DontDestroyOnLoad(gameObject);
+}
 
-        string connStr = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;user=vruser;database=world;port=3306;password=9ZxgnmXHSIdYIsK5qoGm";
-        MySqlConnection conn = new MySqlConnection(connStr);
-        try
-        {
-            Debug.Log("Connecting to MySQL...");
-            conn.Open();
-            // Perform database operations
-        }
-        catch (MySqlException ex)
-        {
-            Debug.Log(ex.ToString());
-        }
-        conn.Close();
-        Debug.Log("Done.");
-    
-}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-}
