@@ -162,8 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_Name: 
 --- !u!114 &439418844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.008899963, g: 0.12462138, b: 0.3773585, a: 0.5764706}
+  m_Color: {r: 0, g: 0.018564932, b: 0.17254902, a: 0.2784314}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -873,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.25055107, b: 0.013883919, a: 1}
+  m_Color: {r: 0.047058824, g: 0.32156864, b: 0.8901961, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1507,6 +1505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productID: {fileID: 1691764624}
+  price: {fileID: 1861437537}
 --- !u!1 &1775998389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,6 +1725,7 @@ GameObject:
   - component: {fileID: 1858970256}
   - component: {fileID: 1858970258}
   - component: {fileID: 1858970257}
+  - component: {fileID: 1858970259}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1789,6 +1789,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858970255}
   m_CullTransparentMesh: 0
+--- !u!114 &1858970259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858970255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd9a7c98f7e8ab479c52b723444ff43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productID: {fileID: 1691764624}
+  price: {fileID: 1861437537}
 --- !u!1 &1861437536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.972549, g: 0.3161209, b: 0.031372517, a: 0.7921569}
+  m_Color: {r: 0.04601282, g: 0.31875968, b: 0.8867924, a: 0.7921569}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

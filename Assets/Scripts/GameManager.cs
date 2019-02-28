@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     //private MySqlConnection connection;
 
     public static GameManager instance;
-    public static string selectedListingID = "18";
+    public static string selectedListingID = "63";
     public static string sellerId = "9";
-    public static string loginUserID = "7";
+    public static string loginUserID = "37";
     public static string modelToLoad;
 
     void Awake()

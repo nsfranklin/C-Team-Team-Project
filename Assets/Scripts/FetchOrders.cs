@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class FetchOrders : MonoBehaviour
 {
     public Text productID;
+    public Text price;
 
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
     MySqlCommand command;
@@ -27,13 +28,15 @@ public class FetchOrders : MonoBehaviour
             connection.Open();
             print("Connection opened! ");
 
-            string query = "SELECT ProductID FROM cTeamTeamProjectDatabase.`Order` where ProductID="+ GameManager.selectedListingID + ";";
+            string query = "SELECT Name, Price FROM cTeamTeamProjectDatabase.Product where ListingID=@listingId";
             command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@listingId", GameManager.selectedListingID);
             read = command.ExecuteReader();
 
             while (read.Read())
             {
                 productID.text = read.GetValue(0).ToString();
+                price.text = read.GetValue(1).ToString();
             }
         }
         catch (MySqlException exception)

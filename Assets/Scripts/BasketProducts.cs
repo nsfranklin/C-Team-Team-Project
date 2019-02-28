@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class BasketProducts : MonoBehaviour
 {
+    public Text listingId;
     public Text productName;
     public Text productPrice;
 
@@ -29,16 +30,17 @@ public class BasketProducts : MonoBehaviour
             connection.Open();
             print("Connection opened! ");
 
-            string query = "select Name, Price from cTeamTeamProjectDatabase.Product where ListingID in (select UserID from Basket where UserID=@userid);";
+            string query = "select ListingID, Name, Price from cTeamTeamProjectDatabase.Product where ListingID="+GameManager.selectedListingID+";";       //in (select UserID from Basket where UserID=@userid);";
             command = new MySqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@userid", GameManager.selectedListingID);
+           // command.Parameters.AddWithValue("@userid", GameManager.loginUserID);
             read = command.ExecuteReader();
 
              while (read.Read())
              {
-                 productName.text = read.GetValue(0).ToString();
-                 productPrice.text = read.GetValue(1).ToString();
+                listingId.text = read.GetValue(0).ToString();
+                 productName.text = read.GetValue(1).ToString();
+                 productPrice.text = read.GetValue(2).ToString();
              }
         }
         catch (MySqlException exception)
@@ -58,11 +60,16 @@ public class BasketProducts : MonoBehaviour
         {
             // connection.Open();
             //print("Connection opened! ");     NO NEED TO OPEN CONNECTION IN THIS PHASE BECAUSE IT IS ALREADY OPENED!
-
-            string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,OrderID,SellerID,ProductID)VALUES("+ GameManager.loginUserID + ",15,"+ GameManager.sellerId +","+ GameManager.selectedListingID+"); ";
+            read.Close();
+            string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,OrderID,SellerID,ProductID)VALUES(@purchaserid ,15, @sellerId, @prodid); ";
             command = new MySqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@purchaserid", GameManager.loginUserID);
+            command.Parameters.AddWithValue("@sellerId", GameManager.sellerId);
+            command.Parameters.AddWithValue("@prodid", GameManager.selectedListingID);
+
             read = command.ExecuteReader();
-            print("TRY is working");
+            print("Order Proceeded! ");
         }
         catch (MySqlException exception)
         {

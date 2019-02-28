@@ -13,18 +13,17 @@ public class ProductDescription : MonoBehaviour
     //public Text userIdText;
 
     public Text listingIdtext;
-    //public Text sellerIdtext;
+    public Text sellerIdtext;
     public Text priceText;
     public Text nameText;
     public Text descriptionText;
-    //public Text dateCreatedText;
     public Text conditionText;
     public Text colourText;
     public Text brandText;
-    //public Text typeText;
+    public Text typeText;
     public Text sizeText;
     public Text materialText;
-   // public Text sexText;
+    public Text sexText;
     public Text stateText;
 
    // public Text basketProductNameTxt;
@@ -63,18 +62,17 @@ public class ProductDescription : MonoBehaviour
             while (read.Read())
             {
                 listingIdtext.text = read.GetValue(0).ToString();
-                //sellerIdtext.text = read.GetValue(1).ToString();
+                sellerIdtext.text = read.GetValue(1).ToString();
                 priceText.text = read.GetValue(2).ToString();
                 nameText.text = read.GetValue(3).ToString();
                 descriptionText.text = read.GetValue(4).ToString();
-                //dateCreatedText.text = read.GetValue(5).ToString();
                 conditionText.text = read.GetValue(7).ToString();
                 colourText.text = read.GetValue(8).ToString();
                 brandText.text = read.GetValue(9).ToString();
-                //typeText.text = read.GetValue(10).ToString();
+                typeText.text = read.GetValue(10).ToString();
                 sizeText.text = read.GetValue(11).ToString();
                 materialText.text = read.GetValue(12).ToString();
-               // sexText.text = read.GetValue(13).ToString();
+                sexText.text = read.GetValue(13).ToString();
                 stateText.text = read.GetValue(14).ToString();
             }
         }
@@ -94,7 +92,7 @@ public class ProductDescription : MonoBehaviour
         connection.Open();
         print("Connection opened! ");
 
-        string query = "insert into cTeamTeamProjectDatabase.Basket (UserID,ProductID) values("+listingIdtext.text+","+priceText.text+")";
+        string query = "insert into cTeamTeamProjectDatabase.Basket (UserID,ProductID) values("+GameManager.loginUserID+","+GameManager.selectedListingID+")";
         command = new MySqlCommand(query, connection);
         read = command.ExecuteReader();
         }
@@ -111,12 +109,16 @@ public class ProductDescription : MonoBehaviour
     {
         try
         {
-            connection.Open();
-            print("Connection opened! ");
+            //connection.Open();
+            //print("Connection opened! ");
+            read.Close();
 
-            string query = "delete from cTeamTeamProjectDatabase.Basket where ProductID ="+priceText.text+";)";
+            string query = "delete from cTeamTeamProjectDatabase.Basket where UserID= @userId and ProductID= @prId;"; // + GameManager.loginUserID +"and ProductID ="+GameManager.selectedListingID+";";
             command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userid", GameManager.loginUserID);
+            command.Parameters.AddWithValue("@prId", GameManager.selectedListingID);
             read = command.ExecuteReader();
+            print("THIS is working!!! ");
         }
         catch (MySqlException exception)
         {
@@ -124,6 +126,6 @@ public class ProductDescription : MonoBehaviour
         }
 
         connection.Close();
-        print("Connection closed! TEEESTTTT ");
+       // print("Connection closed!  ");
     }
 }
