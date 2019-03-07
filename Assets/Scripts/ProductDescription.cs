@@ -52,7 +52,7 @@ public class ProductDescription : MonoBehaviour
         try
         {
             connection.Open();
-            print("Connection opened! ");
+            //print("Connection opened! ");
             string query = "select * from cTeamTeamProjectDatabase.Product where ListingID=@listingID;";
             command = new MySqlCommand(query, connection);
 
@@ -82,7 +82,7 @@ public class ProductDescription : MonoBehaviour
         }
 
         connection.Close();
-        print("Connection closed! ");
+       // print("Connection closed! ");
     }
 
     public void addToBasket()
@@ -90,7 +90,7 @@ public class ProductDescription : MonoBehaviour
         try
         { 
         connection.Open();
-        print("Connection opened! ");
+        //print("Connection opened! ");
 
         string query = "insert into cTeamTeamProjectDatabase.Basket (UserID,ProductID) values("+GameManager.loginUserID+","+GameManager.selectedListingID+")";
         command = new MySqlCommand(query, connection);
@@ -102,7 +102,7 @@ public class ProductDescription : MonoBehaviour
          }
 
         connection.Close();
-        print("Connection closed! ");
+       // print("Connection closed! ");
     }
 
     public void removeFromBasket()
@@ -118,7 +118,7 @@ public class ProductDescription : MonoBehaviour
             command.Parameters.AddWithValue("@userid", GameManager.loginUserID);
             command.Parameters.AddWithValue("@prId", GameManager.selectedListingID);
             read = command.ExecuteReader();
-            print("THIS is working!!! ");
+           // print("THIS is working!!! ");
         }
         catch (MySqlException exception)
         {

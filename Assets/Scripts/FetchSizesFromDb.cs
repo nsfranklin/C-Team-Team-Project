@@ -44,6 +44,7 @@ public class FetchSizesFromDb : MonoBehaviour
             {
                 sizeValues.Insert(index, read.GetString("Size"));
                 //index++;
+                
             }
             dropdownSizes = GetComponent<Dropdown>();
             dropdownSizes.ClearOptions();
