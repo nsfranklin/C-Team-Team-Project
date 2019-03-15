@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class ButtonsControl : MonoBehaviour
 {
     [SerializeField]
-    private GameObject buttonTemplate;
+    //private GameObject buttonTemplate;
 
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
     MySqlCommand command;
@@ -20,6 +20,7 @@ public class ButtonsControl : MonoBehaviour
 
     public List<GameObject> buttons;
     public int numberOfProducts;
+    public SimpleObjectPool buttonObjectPool;
 
     public List<GameObject> GetButtonsList()
     {
@@ -46,11 +47,14 @@ public class ButtonsControl : MonoBehaviour
         // foreach (int i in intArray)    
         for (int i = 1; i <= numberOfProducts; i++)
         {
-            GameObject button = Instantiate(buttonTemplate) as GameObject;
-            button.SetActive(true);
-
-            button.GetComponent<ButtonsList>().setText("Product #" + i);
-            button.transform.SetParent(buttonTemplate.transform.parent,false);
+            GameObject newProductButton = new GameObject();
+            //newProductButton.transform.SetParent(buttonTemplate.transform.parent, false);
+            //newProductButton.SetActive(true);
+            productButton productButton = gameObject.AddComponent(typeof(productButton)) as productButton;// newProductButton.GetComponent<productButton>();
+            productButton.Setup(8, "Test Product", 200);
+            print("in loop at " + i);
+            //productButton.GetComponent<ButtonsList>().setText("Product #" + i);
+            
         }
 
     }

@@ -2,25 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class RaycastClick : MonoBehaviour
 {
-
-    // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
 
-            RaycastHit hit;
               float theDistance = -1.0f;
 
               Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
               Debug.DrawRay(transform.position, forward, Color.green);
 
-              if (Physics.Raycast(transform.position, (forward), out hit))
+
+        if (Physics.Raycast(transform.position, (forward), out hit))
               {
 
                     theDistance = hit.distance;
-                    print(theDistance + " " + hit.collider.gameObject.name);
+                    //print(theDistance + " " + hit.collider.gameObject.name);
+
                     if (hit.collider.gameObject.name == "ProductsBtn")
                     {
                           if (Input.GetKeyDown(KeyCode.P))
@@ -67,6 +69,7 @@ public class RaycastClick : MonoBehaviour
                     Initiate.Fade("3DObjectScene", Color.black, 2.0f);
                 }
             }
+
         }
     }
 }
