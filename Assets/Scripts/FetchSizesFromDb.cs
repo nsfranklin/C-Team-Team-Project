@@ -9,12 +9,12 @@ using UnityEngine.UI;
 
 public class FetchSizesFromDb : MonoBehaviour
 {
-    public Dropdown dropdownSizes;
-     public List<string> sizeValues = new List<string>();
-    public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
-    MySqlCommand command;
-    MySqlConnection connection = new MySqlConnection(db_connection);
-    MySqlDataReader read;
+        public  static Dropdown dropdownSizes;
+        public static List<string> sizeValues = new List<string>();
+        public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
+        static MySqlCommand command;
+        static MySqlConnection connection = new MySqlConnection(db_connection);
+        static MySqlDataReader read;
 
     public int dropdownValue;
     public string message;
@@ -25,8 +25,7 @@ public class FetchSizesFromDb : MonoBehaviour
         sizeDropdown();
     }
 
-
-    public void sizeDropdown()
+    public static void sizeDropdown()
     {
         int index = 0;
 
@@ -46,7 +45,7 @@ public class FetchSizesFromDb : MonoBehaviour
                 //index++;
                 
             }
-            dropdownSizes = GetComponent<Dropdown>();
+           // dropdownSizes = GetComponent<Dropdown>();
             dropdownSizes.ClearOptions();
             dropdownSizes.AddOptions(sizeValues);
 

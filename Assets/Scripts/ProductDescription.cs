@@ -32,9 +32,9 @@ public class ProductDescription : MonoBehaviour
     
 
         public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
-        MySqlCommand command;
-        MySqlConnection connection = new MySqlConnection(db_connection);
-        MySqlDataReader read;
+        public static MySqlCommand command;
+        public static MySqlConnection connection = new MySqlConnection(db_connection);
+        public static MySqlDataReader read;
 
 
     void Start()
@@ -85,7 +85,7 @@ public class ProductDescription : MonoBehaviour
        // print("Connection closed! ");
     }
 
-    public void addToBasket()
+    public static void addToBasket()
     {
         try
         { 
@@ -102,10 +102,10 @@ public class ProductDescription : MonoBehaviour
          }
 
         connection.Close();
-       // print("Connection closed! ");
+        print("Product added to basket! ");
     }
 
-    public void removeFromBasket()
+    public static void removeFromBasket()
     {
         try
         {
@@ -118,7 +118,7 @@ public class ProductDescription : MonoBehaviour
             command.Parameters.AddWithValue("@userid", GameManager.loginUserID);
             command.Parameters.AddWithValue("@prId", GameManager.selectedListingID);
             read = command.ExecuteReader();
-           // print("THIS is working!!! ");
+            print("Item removed from basket!  ");
         }
         catch (MySqlException exception)
         {

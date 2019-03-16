@@ -11,4 +11,9 @@ public class PanelScript : MonoBehaviour
     {
         Panel.gameObject.SetActive(false);
     }
+
+    public void showPanel()
+    {
+        Panel.gameObject.SetActive(true);
+    }
 }

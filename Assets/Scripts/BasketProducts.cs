@@ -14,9 +14,9 @@ public class BasketProducts : MonoBehaviour
     public Text productPrice;
 
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
-    MySqlCommand command;
-    MySqlConnection connection = new MySqlConnection(db_connection);
-    MySqlDataReader read;
+    public static MySqlCommand command;
+    public static MySqlConnection connection = new MySqlConnection(db_connection);
+    public static MySqlDataReader read;
 
     void Start()
     {
@@ -54,7 +54,7 @@ public class BasketProducts : MonoBehaviour
     }
 
     //METHOD WHICH REGISTER AN ORDER FROM BASKET GUI INTO DATABASE TABLE--
-    public void proceedWithOrder()
+    public static void proceedWithOrder()
     {
         try
         {

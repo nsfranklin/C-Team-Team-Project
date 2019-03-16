@@ -23,14 +23,15 @@ public class FilteringResults :MonoBehaviour
     MySqlConnection connection = new MySqlConnection(db_connection);
     MySqlDataReader read;
 
-    public Text theText;
+    public static Text theText;
     private int numberofFilteredProd;
     private List<GameObject> buttons;
     ButtonsControl allButtons = new ButtonsControl();
 
-    public void test()
+    public static string test()
     {
-        theText.text = "Filters: "+sizeSelected + " - " + materialSelected + " - " + colourSelected;
+        string s= "Filters: "+sizeSelected + " - " + materialSelected + " - " + colourSelected;
+        return s;
     }
 
    public void FilterButtonClicked()
