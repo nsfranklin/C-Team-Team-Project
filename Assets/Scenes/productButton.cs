@@ -30,7 +30,7 @@ public class productButton : MonoBehaviour
         }
         */
     }
-    public void Setup(int productIDFromDB, string productNameFromDB, int price)//, Image coverImageFromDB)
+  /*  public void Setup(int productIDFromDB, string productNameFromDB, int price)//, Image coverImageFromDB)
     {
         productID = productIDFromDB;
         productName.text = productNameFromDB;
@@ -38,6 +38,6 @@ public class productButton : MonoBehaviour
         priceString.text = price.ToString();
         //buttonList = inputButtonList;
 
-    }
+    }*/
 
 }

@@ -51,7 +51,7 @@ public class ButtonsControl : MonoBehaviour
             //newProductButton.transform.SetParent(buttonTemplate.transform.parent, false);
             //newProductButton.SetActive(true);
             productButton productButton = gameObject.AddComponent(typeof(productButton)) as productButton;// newProductButton.GetComponent<productButton>();
-            productButton.Setup(8, "Test Product", 200);
+           // productButton.Setup(8, "Test Product", 200);
             print("in loop at " + i);
             //productButton.GetComponent<ButtonsList>().setText("Product #" + i);
             
@@ -70,7 +70,7 @@ public class ButtonsControl : MonoBehaviour
         string temp = "";
         try
         {
-            //connection.Open();
+            connection.Open();
             print("Connection opened! ");
 
             string query = "SELECT count(*) FROM cTeamTeamProjectDatabase.Product where State='available';";

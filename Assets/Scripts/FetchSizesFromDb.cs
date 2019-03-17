@@ -31,7 +31,7 @@ public class FetchSizesFromDb : MonoBehaviour
 
         try
         {
-           // connection.Open();
+            connection.Open();
             print("Connection  iiiissss opppeeeeeeennnnn  opened! ");
             
             string query = "SELECT distinct Size from cTeamTeamProjectDatabase.Product order by size asc;";
