@@ -32,7 +32,11 @@ public class FetchSizesFromDb : MonoBehaviour
         try
         {
             connection.Open();
+<<<<<<< HEAD
             print("Connection  iiiissss opppeeeeeeennnnn  opened! ");
+=======
+            print("Connection opened! ");
+>>>>>>> parent of 5cdcfa6... nothing important
             
             string query = "SELECT distinct Size from cTeamTeamProjectDatabase.Product order by size asc;";
             command = new MySqlCommand(query, connection);
@@ -54,17 +58,15 @@ public class FetchSizesFromDb : MonoBehaviour
         catch (MySqlException exception)
         {
             print("Error" + exception.ToString());
-            print("QA KARI KI TA QIFSHA PIDHIN E NANES!! ");
         }
 
         connection.Close();
-        print(" It is coming in this method! ");
     }
 
-   /* void Update()
+    void Update()
     {
         dropdownValue = dropdownSizes.value;
         message = dropdownSizes.options[dropdownValue].text;
         FilteringResults.sizeSelected = message;
-    }*/
+    }
 }

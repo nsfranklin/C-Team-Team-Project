@@ -13,8 +13,6 @@ public class RaycastClick : MonoBehaviour
     public Dropdown sizeDropdown;
     public RectTransform sizeDropdownTemplate;
     public Text filterPrint;
-    public int sizeDropdownValue;
-    public string message;
 
     void Update()
     {
@@ -171,20 +169,10 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    sizeDropdownTemplate.gameObject.SetActive(true);
                     FetchSizesFromDb.sizeDropdown();
-                   // sizeDropdown.gameObject.SetActive(true);
+                    sizeDropdown.gameObject.SetActive(true);
+                    sizeDropdownTemplate.gameObject.SetActive(true);
 
-
-                   /* if (hit.collider.gameObject.name == "sizeChoiceHelper")
-                    {
-                        if (Input.GetKeyDown(KeyCode.P))
-                        {
-                            sizeDropdownValue = sizeDropdown.value;
-                            message = sizeDropdown.options[sizeDropdownValue].text;
-                            FilteringResults.sizeSelected = message;
-                        }
-                    }*/
                 }
             }
 
