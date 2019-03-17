@@ -314,6 +314,8 @@ MonoBehaviour:
   sizeDropdown: {fileID: 48938797}
   sizeDropdownTemplate: {fileID: 1400760874}
   filterPrint: {fileID: 1916554612}
+  sizeDropdownValue: 0
+  message: 
 --- !u!114 &20579471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,8 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02f8d7e26b0b77438e901e51fd2fabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdownSizes: {fileID: 48938797}
-  sizeValues: []
   dropdownValue: 0
   message: 
 --- !u!114 &48938797
@@ -2682,6 +2682,8 @@ MonoBehaviour:
   sizeDropdown: {fileID: 0}
   sizeDropdownTemplate: {fileID: 0}
   filterPrint: {fileID: 0}
+  sizeDropdownValue: 0
+  message: 
 --- !u!114 &429292332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3486,6 +3488,7 @@ GameObject:
   - component: {fileID: 575370985}
   - component: {fileID: 575370984}
   - component: {fileID: 575370983}
+  - component: {fileID: 575370986}
   m_Layer: 5
   m_Name: openSizeDrpHelper
   m_TagString: Untagged
@@ -3571,6 +3574,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575370981}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &575370986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575370981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02f8d7e26b0b77438e901e51fd2fabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdownValue: 0
+  message: 
 --- !u!1001 &575371298
 PrefabInstance:
   m_ObjectHideFlags: 0

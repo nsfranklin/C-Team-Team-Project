@@ -70,7 +70,7 @@ public class ButtonsControl : MonoBehaviour
         string temp = "";
         try
         {
-            connection.Open();
+            //connection.Open();
             print("Connection opened! ");
 
             string query = "SELECT count(*) FROM cTeamTeamProjectDatabase.Product where State='available';";
