@@ -30,7 +30,7 @@ public class ButtonsControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        allProducts();
+        //allProducts();
 
         buttons = new List<GameObject>();
 

@@ -16,8 +16,9 @@ public class FilteringResults :MonoBehaviour
     public static string materialSelected;
     public static string colourSelected;
 
+    public static List<string> productList = new List<string>();
+    public static List<string> filteredProducts = new List<string>();
 
-    public static List<string> products = new List<string>();
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
     MySqlCommand command;
     MySqlConnection connection = new MySqlConnection(db_connection);
@@ -25,8 +26,7 @@ public class FilteringResults :MonoBehaviour
 
     public static Text theText;
     private int numberofFilteredProd;
-    private List<GameObject> buttons;
-    ButtonsControl allButtons = new ButtonsControl();
+    public static int limitation =0;
 
     public static string test()
     {
@@ -34,51 +34,100 @@ public class FilteringResults :MonoBehaviour
         return s;
     }
 
-   public void FilterButtonClicked()
+    public void nextPage()
     {
-        filterProducts();
-        buttons = allButtons.GetButtonsList();
+        limitation = limitation + 4;
+        print("Limitation reset! ");
+    }
 
-        if (buttons.Count > 0)
+    public void previousPage()
+    {
+        if (limitation > 0)
         {
-            foreach (GameObject button in buttons)
+            limitation = limitation - 4;
+            print("Limitation reduced by 4 ! ");
+        }
+        else
+            print("No previous products to show! ");
+    }
+
+    public void fetchProducts()
+    {
+        int index = 0;
+        try
+        {
+            connection.Open();
+            print("Connection for fetchProducts() method is open ");
+
+            string query = "select ListingID from cTeamTeamProjectDatabase.Product LIMIT "+limitation+",4;";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+
+            while (read.Read())
             {
-                Destroy(button.gameObject);
+                productList.Insert(index, read.GetString("ListingID"));
             }
 
-            buttons.Clear();
         }
-
-        for (int i = 1; i <= numberofFilteredProd; i++)
+        catch (MySqlException exception)
         {
-            GameObject button = Instantiate(buttonTemplate) as GameObject;
-            button.SetActive(true);
-
-            button.GetComponent<ButtonsList>().setText("Product #" + i);
-            button.transform.SetParent(buttonTemplate.transform.parent, false);
+            print("Error" + exception.ToString());
         }
-        print("It is going through start method");
+
+        connection.Close();
+        print(" It is coming in this method! ");
     }
 
     public void filterProducts()
     {
-        string temp ="";
+        int index = 0;
         try
         {
             connection.Open();
             print("Connection opened! ");
 
-            string query = "SELECT count(*) FROM cTeamTeamProjectDatabase.Product  where Size = 10 and Material = 'Cotton' and Colour='Black';";
+            // string query = "SELECT ListingID FROM cTeamTeamProjectDatabase.Product  where Size ="+sizeSelected+" and Material = '"+materialSelected+"' and Colour='"+colourSelected+ "' LIMIT " + limitation + ",4;";
+            string query = "SELECT ListingID FROM cTeamTeamProjectDatabase.Product  where ListingID IS NOT NULL ";
+
+            if (!sizeSelected.Equals("None"))
+            {
+                query = query + " AND Size =" + sizeSelected;
+            }
+            if (!materialSelected.Equals("None"))
+            {
+                query = query + " AND Material = '" + materialSelected + "'";
+            }
+            if (!colourSelected.Equals("None"))
+            {
+                query = query + " AND Colour='" + colourSelected + "'";
+            }
+            query = query + " LIMIT " + limitation + ",4;";
+
+
             command = new MySqlCommand(query, connection);
             read = command.ExecuteReader();
 
             while (read.Read())
             {
-                temp = read.GetValue(0).ToString();
+                filteredProducts.Insert(index, read.GetString("ListingID"));
 
             }
-            numberofFilteredProd = int.Parse(temp);
-            print(" This motherfucker is workiiiinggg ");
+
+            int x = filteredProducts.Count % 4;
+            if (filteredProducts.Count == 0)
+            {
+                x = 4;
+            }
+            if (x != 0)
+            {
+                while ((4-x) < 4)
+                {
+                    filteredProducts.Add("-1");
+                    x = x- 1;
+                }
+            }
+            print(" filterProducts() method is working! ");
 
         }
         catch (MySqlException exception)
