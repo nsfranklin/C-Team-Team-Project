@@ -23,6 +23,7 @@ public class FetchProductsProperties : MonoBehaviour
 
     public void productSizes()
     {
+        sizeValues.Clear();
         int index = 0;
         try
         {
@@ -49,6 +50,7 @@ public class FetchProductsProperties : MonoBehaviour
 
     public void productMaterials()
     {
+        materialValues.Clear();
         int index = 0;
         try
         {
@@ -75,6 +77,7 @@ public class FetchProductsProperties : MonoBehaviour
 
     public void productColours()
     {
+        colourValues.Clear();
         int index = 0;
 
         try

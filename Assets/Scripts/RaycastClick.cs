@@ -28,11 +28,14 @@ public class RaycastClick : MonoBehaviour
     int colourIndex = 0;
     FetchProductsProperties fetch = new FetchProductsProperties();
 
-    private void Start()
+    void Start()
     {
-       fetch.productSizes();
+        fetch.productSizes();
+        Debug.Log("Sizes Fetched");
         fetch.productMaterials();
+        Debug.Log("Materials Fetched");
         fetch.productColours();
+        Debug.Log("Colours Fetched");
     }
 
     void Update()
@@ -385,8 +388,15 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    sizeIndex++;
-                    sizes.text = FetchProductsProperties.sizeValues[sizeIndex];
+                    if (sizeIndex < FetchProductsProperties.sizeValues.Count -1) {
+                        sizeIndex++;
+                        sizes.text = FetchProductsProperties.sizeValues[sizeIndex];
+                    }
+                    else
+                    {
+                        sizeIndex = 0;
+                        sizes.text = FetchProductsProperties.sizeValues[sizeIndex];
+                    }
                 }
             }
 
@@ -394,8 +404,16 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    sizeIndex--;
-                    sizes.text = FetchProductsProperties.sizeValues[sizeIndex];
+                    if (sizeIndex > 0)
+                    {
+                        sizeIndex--;
+                        sizes.text = FetchProductsProperties.sizeValues[sizeIndex];
+                    }
+                    else
+                    {
+                        sizeIndex = FetchProductsProperties.sizeValues.Count - 1;
+                        sizes.text = FetchProductsProperties.sizeValues[sizeIndex];
+                    }
                 }
             }
 
@@ -403,8 +421,16 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    materialIndex++;
-                    materials.text = FetchProductsProperties.materialValues[materialIndex];
+                    if (materialIndex < FetchProductsProperties.materialValues.Count - 1)
+                    {
+                        materialIndex++;
+                        materials.text = FetchProductsProperties.materialValues[materialIndex];
+                    }
+                    else
+                    {
+                        materialIndex = 0;
+                        materials.text = FetchProductsProperties.materialValues[materialIndex];
+                    }
                 }
             }
 
@@ -412,8 +438,16 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    materialIndex--;
-                    materials.text = FetchProductsProperties.materialValues[materialIndex];
+                    if (materialIndex > 0)
+                    {
+                        materialIndex--;
+                        materials.text = FetchProductsProperties.materialValues[materialIndex];
+                    }
+                    else
+                    {
+                        materialIndex = FetchProductsProperties.materialValues.Count - 1;
+                        materials.text = FetchProductsProperties.materialValues[materialIndex];
+                    }
                 }
             }
 
@@ -421,8 +455,15 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    colourIndex++;
-                    colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    if (colourIndex < FetchProductsProperties.colourValues.Count -1) {
+                        colourIndex++;
+                        colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    }
+                    else
+                    {
+                        colourIndex = 0;
+                        colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    }
                 }
             }
 
@@ -430,8 +471,16 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    colourIndex--;
-                    colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    if (colourIndex > 0)
+                    {
+                        colourIndex--;
+                        colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    }
+                    else
+                    {
+                        colourIndex = FetchProductsProperties.colourValues.Count - 1;
+                        colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    }
                 }
             }
         }
