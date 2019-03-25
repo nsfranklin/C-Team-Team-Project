@@ -55,7 +55,7 @@ public class RaycastClick : MonoBehaviour
             if (hit.collider.gameObject.name == "Product1")
             {
                 if (Input.GetKeyDown(KeyCode.P))
-                {
+                {                  
                     if (filterButtonPressed == false)
                     {
                         productsFilter.fetchProducts();
@@ -85,7 +85,7 @@ public class RaycastClick : MonoBehaviour
                         }
                     }
                 }
-            }
+                }
 
             if (hit.collider.gameObject.name == "Product2")
             {
@@ -260,7 +260,7 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Initiate.Fade("3DObjectScene", Color.black, 2.0f);
+                    Initiate.Fade("ModelScene", Color.black, 2.0f);
                 }
             }
 
@@ -284,7 +284,7 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Initiate.Fade("3DObjectScene", Color.black, 2.0f);
+                    Initiate.Fade("ModelScene", Color.black, 2.0f);
                 }
             }
 
@@ -293,6 +293,7 @@ public class RaycastClick : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     ProductDescription.addToBasket();
+                    Initiate.Fade("Basket Scene", Color.black, 2.0f);
                 }
             }
 
@@ -332,6 +333,7 @@ public class RaycastClick : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     BasketProducts.proceedWithOrder();
+                    Initiate.Fade("OrdersScene", Color.black, 2.0f);
                 }
             }
 
@@ -348,11 +350,25 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
+                    for (int i = 0; i < FetchProductsProperties.sizeValues.Count; i++)
+                   {
+                       print("Size "+i+": "+FetchProductsProperties.sizeValues[i]);
+                   }
+                   for (int i = 0; i < FetchProductsProperties.materialValues.Count; i++)
+                   {
+                       print("Material " + i + ": " + FetchProductsProperties.materialValues[i]);
+                   }
+                   for (int i = 0; i < FetchProductsProperties.colourValues.Count; i++)
+                   {
+                       print("Colour " + i + ": " + FetchProductsProperties.colourValues[i]);
+                   }
+                   /*
                     filterButtonPressed = true;
                     FilteringResults.sizeSelected = FetchProductsProperties.sizeValues[sizeIndex];
                     FilteringResults.materialSelected = FetchProductsProperties.materialValues[materialIndex];
                     FilteringResults.colourSelected = FetchProductsProperties.colourValues[colourIndex];
                    filterPrint.text =  FilteringResults.test();
+                   */
                 }
             }
 
@@ -361,6 +377,7 @@ public class RaycastClick : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     filterButtonPressed = false;
+                    print("Filter Removed! ");
                 }
             }
 
@@ -417,31 +434,6 @@ public class RaycastClick : MonoBehaviour
                     colours.text = FetchProductsProperties.colourValues[colourIndex];
                 }
             }
-
-
-
-            /*if (hit.collider.gameObject.name == "openSizeDrpHelper")
-            {
-                if (Input.GetKeyDown(KeyCode.P))
-                {
-                    FetchSizesFromDb fd = new FetchSizesFromDb();
-                    fd.sizeDropdown();
-
-                    dropdownSizes.template.gameObject.SetActive(true);
-
-
-                     if (hit.collider.gameObject.name == "sizeChoiceHelper")
-                     {
-                         if (Input.GetKeyDown(KeyCode.P))
-                         {
-                             sizeDropdownValue = sizeDropdown.value;
-                             message = sizeDropdown.options[sizeDropdownValue].text;
-                             FilteringResults.sizeSelected = message;
-                         }
-                     }
-                }
-            }*/
-
         }
     }
 }

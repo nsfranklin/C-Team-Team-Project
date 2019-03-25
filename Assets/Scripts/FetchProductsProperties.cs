@@ -17,6 +17,10 @@ public class FetchProductsProperties : MonoBehaviour
         static MySqlConnection connection = new MySqlConnection(db_connection);
         static MySqlDataReader read;
 
+
+    //testing
+    public static List<string> images = new List<string>();
+
     public void productSizes()
     {
         int index = 0;
@@ -86,6 +90,58 @@ public class FetchProductsProperties : MonoBehaviour
             while (read.Read())
             {
                 colourValues.Insert(index, read.GetString("Colour"));
+            }
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+    }
+
+    public void productImages()
+    {
+        int index = 0;
+
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "select ImageBlob from cTeamTeamProjectDatabase.Image;";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+            while (read.Read())
+            {
+                images.Insert(index, read.GetString("ImageBlob"));
+            }
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+    }
+
+    public void productModel()
+    {
+        int index = 0;
+
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "select ModelString from cTeamTeamProjectDatabase.Model where ModelID=8;";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+            while (read.Read())
+            {
+                images.Insert(index, read.GetString("ModelString"));
             }
         }
         catch (MySqlException exception)

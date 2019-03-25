@@ -61,7 +61,7 @@ public class BasketProducts : MonoBehaviour
             // connection.Open();
             //print("Connection opened! ");     NO NEED TO OPEN CONNECTION IN THIS PHASE BECAUSE IT IS ALREADY OPENED!
             read.Close();
-            string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,OrderID,SellerID,ProductID)VALUES(@purchaserid ,15, @sellerId, @prodid); ";
+            string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,SellerID,ProductID)VALUES(@purchaserid , @sellerId, @prodid); ";
             command = new MySqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@purchaserid", GameManager.loginUserID);
