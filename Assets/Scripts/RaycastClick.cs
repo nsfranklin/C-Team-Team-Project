@@ -11,6 +11,9 @@ public class RaycastClick : MonoBehaviour
     public Text sizes;
     public Text materials;
     public Text colours;
+    public Text condition;
+    public Text sex;
+    public Text brands;
     public GameObject checkOutPanel;
     public GameObject confirmationPopUp;
     public GameObject itemPanelOnBasket;
@@ -26,6 +29,9 @@ public class RaycastClick : MonoBehaviour
     int sizeIndex =0;
     int materialIndex = 0;
     int colourIndex = 0;
+    int conditionIndex = 0;
+    int brandIndex = 0;
+    int sexIndex = 0;
     FetchProductsProperties fetch = new FetchProductsProperties();
 
     void Start()
@@ -36,6 +42,12 @@ public class RaycastClick : MonoBehaviour
         Debug.Log("Materials Fetched");
         fetch.productColours();
         Debug.Log("Colours Fetched");
+        fetch.productCondition();
+        Debug.Log("Condition Fetched");
+        fetch.productSex();
+        Debug.Log("Sex fetched");
+        fetch.productBrand();
+        Debug.Log("Brand fetched");
     }
 
     void Update()
@@ -365,13 +377,21 @@ public class RaycastClick : MonoBehaviour
                    {
                        print("Colour " + i + ": " + FetchProductsProperties.colourValues[i]);
                    }
-                   /*
-                    filterButtonPressed = true;
+
+                    for (int i = 0; i < FetchProductsProperties.conditionValues.Count; i++)
+                    {
+                        print("Condition " + i + ": " + FetchProductsProperties.conditionValues[i]);
+                    }
+
+                    // filterButtonPressed = true;
                     FilteringResults.sizeSelected = FetchProductsProperties.sizeValues[sizeIndex];
                     FilteringResults.materialSelected = FetchProductsProperties.materialValues[materialIndex];
                     FilteringResults.colourSelected = FetchProductsProperties.colourValues[colourIndex];
-                   filterPrint.text =  FilteringResults.test();
-                   */
+                    FilteringResults.conditionSelected = FetchProductsProperties.conditionValues[conditionIndex];
+                    FilteringResults.sexSelected = FetchProductsProperties.sexValues[sexIndex];
+                    FilteringResults.brandSelected = FetchProductsProperties.brandValues[brandIndex];
+                    filterPrint.text =  FilteringResults.test();
+                   
                 }
             }
 
@@ -480,6 +500,108 @@ public class RaycastClick : MonoBehaviour
                     {
                         colourIndex = FetchProductsProperties.colourValues.Count - 1;
                         colours.text = FetchProductsProperties.colourValues[colourIndex];
+                    }
+                }
+            }
+
+            if (hit.collider.gameObject.name == "conditionUpButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    if (conditionIndex < FetchProductsProperties.conditionValues.Count - 1)
+                    {
+                        conditionIndex++;
+                        condition.text = FetchProductsProperties.conditionValues[conditionIndex];
+                    }
+                    else
+                    {
+                        conditionIndex = 0;
+                        condition.text = FetchProductsProperties.conditionValues[conditionIndex];
+                    }
+                }
+            }
+
+            if (hit.collider.gameObject.name == "conditionDownButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    if (conditionIndex > 0)
+                    {
+                        conditionIndex--;
+                        condition.text = FetchProductsProperties.conditionValues[conditionIndex];
+                    }
+                    else
+                    {
+                        conditionIndex = FetchProductsProperties.conditionValues.Count - 1;
+                        condition.text = FetchProductsProperties.conditionValues[conditionIndex];
+                    }
+                }
+            }
+
+            if (hit.collider.gameObject.name == "brandUpButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    if (brandIndex < FetchProductsProperties.brandValues.Count - 1)
+                    {
+                        brandIndex++;
+                        brands.text = FetchProductsProperties.brandValues[brandIndex];
+                    }
+                    else
+                    {
+                        brandIndex = 0;
+                        brands.text = FetchProductsProperties.brandValues[brandIndex];
+                    }
+                }
+            }
+
+            if (hit.collider.gameObject.name == "brandDownButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    if (brandIndex > 0)
+                    {
+                        brandIndex--;
+                        brands.text = FetchProductsProperties.brandValues[brandIndex];
+                    }
+                    else
+                    {
+                        brandIndex = FetchProductsProperties.brandValues.Count - 1;
+                        brands.text = FetchProductsProperties.brandValues[brandIndex];
+                    }
+                }
+            }
+
+            if (hit.collider.gameObject.name == "sexUpButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    if (sexIndex < FetchProductsProperties.sexValues.Count - 1)
+                    {
+                        sexIndex++;
+                        sex.text = FetchProductsProperties.sexValues[sexIndex];
+                    }
+                    else
+                    {
+                        sexIndex = 0;
+                        sex.text = FetchProductsProperties.sexValues[sexIndex];
+                    }
+                }
+            }
+
+            if (hit.collider.gameObject.name == "sexDownButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    if (sexIndex > 0)
+                    {
+                        sexIndex--;
+                        sex.text = FetchProductsProperties.sexValues[sexIndex];
+                    }
+                    else
+                    {
+                        sexIndex = FetchProductsProperties.sexValues.Count - 1;
+                        sex.text = FetchProductsProperties.sexValues[conditionIndex];
                     }
                 }
             }

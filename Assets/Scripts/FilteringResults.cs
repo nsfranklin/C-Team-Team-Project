@@ -15,6 +15,9 @@ public class FilteringResults :MonoBehaviour
     public static string sizeSelected;
     public static string materialSelected;
     public static string colourSelected;
+    public static string conditionSelected;
+    public static string sexSelected;
+    public static string brandSelected;
 
     public static List<string> productList = new List<string>();
     public static List<string> filteredProducts = new List<string>();
@@ -30,7 +33,7 @@ public class FilteringResults :MonoBehaviour
 
     public static string test()
     {
-        string s= "Filters: "+sizeSelected + " - " + materialSelected + " - " + colourSelected;
+        string s= "Filters: "+sizeSelected + " - " + materialSelected + " - " + colourSelected+" - "+conditionSelected+" - "+sexSelected+" - "+brandSelected;
         return s;
     }
 
@@ -101,6 +104,18 @@ public class FilteringResults :MonoBehaviour
             if (!colourSelected.Equals("None"))
             {
                 query = query + " AND Colour='" + colourSelected + "'";
+            }
+            if (!conditionSelected.Equals("None"))
+            {
+                query = query + " AND Product.Condition='" + conditionSelected + "'";
+            }
+            if (!sexSelected.Equals("None"))
+            {
+                query = query + " AND Sex='" + sexSelected + "'";
+            }
+            if (!brandSelected.Equals("None"))
+            {
+                query = query + " AND Brand='" + brandSelected + "'";
             }
             query = query + " LIMIT " + limitation + ",4;";
 

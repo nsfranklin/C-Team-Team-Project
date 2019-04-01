@@ -12,6 +12,9 @@ public class FetchProductsProperties : MonoBehaviour
         public static List<string> sizeValues = new List<string>();
         public static List<string> materialValues = new List<string>();
         public static List<string> colourValues = new List<string>();
+        public static List<string> conditionValues = new List<string>();
+        public static List<string> brandValues = new List<string>();
+        public static List<string> sexValues = new List<string>();
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
         static MySqlCommand command;
         static MySqlConnection connection = new MySqlConnection(db_connection);
@@ -103,6 +106,90 @@ public class FetchProductsProperties : MonoBehaviour
         connection.Close();
     }
 
+    public void productCondition()
+    {
+        conditionValues.Clear();
+        int index = 0;
+
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "select distinct Product.Condition from cTeamTeamProjectDatabase.Product;";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+            conditionValues.Add("None");
+            while (read.Read())
+            {
+                conditionValues.Insert(index, read.GetString("Condition"));
+            }
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+    }
+
+    public void productSex()
+    {
+        sexValues.Clear();
+        int index = 0;
+
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "select distinct Sex from cTeamTeamProjectDatabase.Product;";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+            sexValues.Add("None");
+            while (read.Read())
+            {
+                sexValues.Insert(index, read.GetString("Sex"));
+            }
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+    }
+
+    public void productBrand()
+    {
+        brandValues.Clear();
+        int index = 0;
+
+        try
+        {
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "select distinct Brand from cTeamTeamProjectDatabase.Product;";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+            brandValues.Add("None");
+            while (read.Read())
+            {
+                brandValues.Insert(index, read.GetString("Brand"));
+            }
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+
+        connection.Close();
+    }
+    //PRODUCT IMAGES TO BE DONE !!!!!!
     public void productImages()
     {
         int index = 0;
