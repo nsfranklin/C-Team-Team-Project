@@ -48,9 +48,9 @@ public class BasketProducts : MonoBehaviour
             print("Error" + exception.ToString());
         }
         read.Close();
-        //connection.Close();
-        //print("Connection closed! ");
-        print("Connection still open!! ");
+        connection.Close();
+        print("Connection closed! ");
+       // print("Connection still open!! ");
     }
 
     //METHOD WHICH REGISTER AN ORDER FROM BASKET GUI INTO DATABASE TABLE--
@@ -58,7 +58,7 @@ public class BasketProducts : MonoBehaviour
     {
         try
         {
-            // connection.Open();
+             connection.Open();
             //print("Connection opened! ");     NO NEED TO OPEN CONNECTION IN THIS PHASE BECAUSE IT IS ALREADY OPENED!
             read.Close();
             string query = "INSERT INTO cTeamTeamProjectDatabase.Order (PurchaserID,SellerID,ProductID)VALUES(@purchaserid , @sellerId, @prodid); ";

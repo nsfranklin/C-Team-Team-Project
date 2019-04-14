@@ -33,7 +33,7 @@ public class FilteringResults :MonoBehaviour
 
     public static string test()
     {
-        string s= "Filters: "+sizeSelected + " - " + materialSelected + " - " + colourSelected+" - "+conditionSelected+" - "+sexSelected+" - "+brandSelected;
+        string s= "Filters: "+sizeSelected + " - " + materialSelected + " - " + conditionSelected+" - "+sexSelected+" - "+colourSelected+" - "+brandSelected;
         return s;
     }
 
@@ -115,7 +115,7 @@ public class FilteringResults :MonoBehaviour
             }
             if (!brandSelected.Equals("None"))
             {
-                query = query + " AND Brand='" + brandSelected + "'";
+                query = query + " AND Product.Brand ='" + brandSelected + "'";
             }
             query = query + " LIMIT " + limitation + ",4;";
 

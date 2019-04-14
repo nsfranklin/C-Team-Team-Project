@@ -83,6 +83,7 @@ public class RaycastClick : MonoBehaviour
                         {
                             GameManager.selectedListingID = FilteringResults.productList[3];
                             Initiate.Fade("Product Description", Color.black, 2.0f);
+                            print("Its fetching without filters");
                         }
                     }
                     else if (filterButtonPressed == true)
@@ -97,6 +98,7 @@ public class RaycastClick : MonoBehaviour
                         {
                             GameManager.selectedListingID = FilteringResults.filteredProducts[3];
                             Initiate.Fade("Product Description", Color.black, 2.0f);
+                            print("Its fetching with filters");
                         }
                     }
                 }
@@ -365,7 +367,7 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    for (int i = 0; i < FetchProductsProperties.sizeValues.Count; i++)
+                  /*  for (int i = 0; i < FetchProductsProperties.sizeValues.Count; i++)
                    {
                        print("Size "+i+": "+FetchProductsProperties.sizeValues[i]);
                    }
@@ -381,9 +383,9 @@ public class RaycastClick : MonoBehaviour
                     for (int i = 0; i < FetchProductsProperties.conditionValues.Count; i++)
                     {
                         print("Condition " + i + ": " + FetchProductsProperties.conditionValues[i]);
-                    }
+                    }*/
 
-                    // filterButtonPressed = true;
+                     filterButtonPressed = true;
                     FilteringResults.sizeSelected = FetchProductsProperties.sizeValues[sizeIndex];
                     FilteringResults.materialSelected = FetchProductsProperties.materialValues[materialIndex];
                     FilteringResults.colourSelected = FetchProductsProperties.colourValues[colourIndex];

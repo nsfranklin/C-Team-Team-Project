@@ -42,11 +42,6 @@ public class ProductDescription : MonoBehaviour
         getData();       
     }
 
-    void Update()
-    {
-
-    }
-
     public void getData()
     {
         try
