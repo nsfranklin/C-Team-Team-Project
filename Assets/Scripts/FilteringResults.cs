@@ -43,6 +43,15 @@ public class FilteringResults :MonoBehaviour
         print("Limitation reset! ");
     }
 
+    public void showButton(GameObject x)
+    {
+        x.SetActive(true);
+    }
+    public void hideButton(GameObject x)
+    {
+        x.SetActive(false);
+    }
+
     public void previousPage()
     {
         if (limitation > 0)
@@ -59,6 +68,7 @@ public class FilteringResults :MonoBehaviour
         int index = 0;
         try
         {
+            print("TEST 1");
             connection.Open();
             print("Connection for fetchProducts() method is open ");
 

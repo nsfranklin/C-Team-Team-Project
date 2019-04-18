@@ -33,9 +33,13 @@ public class RaycastClick : MonoBehaviour
     int brandIndex = 0;
     int sexIndex = 0;
     FetchProductsProperties fetch = new FetchProductsProperties();
-
+    FilteringResults productsFilter = new FilteringResults();
     void Start()
     {
+        if (FilteringResults.limitation > 0)
+            productsFilter.showButton(previousPageButton);
+        else
+            productsFilter.hideButton(previousPageButton);
         fetch.productSizes();
         Debug.Log("Sizes Fetched");
         fetch.productMaterials();
@@ -53,7 +57,7 @@ public class RaycastClick : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        FilteringResults productsFilter = new FilteringResults();
+
 
               float theDistance = -1.0f;
 
@@ -213,24 +217,24 @@ public class RaycastClick : MonoBehaviour
                 {
                     productsFilter.nextPage();
                     //productsFilter.fetchProducts();
+                    if (FilteringResults.limitation > 0)
+                    {
+                        productsFilter.showButton(previousPageButton);
+                    }
                 }
             }
-
-        //    if (FilteringResults.limitation > 0)
-         //   {
-           //  previousPageButton.gameObject.SetActive(true);
-            //}
-          /*  else if(FilteringResults.limitation <=0)
-           // {
-                previousPageButton.gameObject.SetActive(false);         // SOLVE THIS !!
-            }*/
-
 
             if (hit.collider.gameObject.name == "PreviousButton")
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     productsFilter.previousPage();
+
+                    if (FilteringResults.limitation <= 0)
+                    {
+                        productsFilter.hideButton(previousPageButton);
+                        //previousPageButton.gameObject.SetActive(false);         // SOLVE THIS !!
+                    }
                 }
             }
 
@@ -273,6 +277,14 @@ public class RaycastClick : MonoBehaviour
                 }
             }
 
+            if (hit.collider.gameObject.name == "ProductPageButton")
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    Initiate.Fade("Product Scene", Color.black, 2.0f);
+                }
+            }
+
             if (hit.collider.gameObject.name == "view3Dbtn")
             {
                 if (Input.GetKeyDown(KeyCode.P))
@@ -293,7 +305,7 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Initiate.Fade("Basket Scene", Color.black, 2.0f);
+                    Initiate.Fade("Product Scene", Color.black, 2.0f);
                 }
             }
 
@@ -367,24 +379,6 @@ public class RaycastClick : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                  /*  for (int i = 0; i < FetchProductsProperties.sizeValues.Count; i++)
-                   {
-                       print("Size "+i+": "+FetchProductsProperties.sizeValues[i]);
-                   }
-                   for (int i = 0; i < FetchProductsProperties.materialValues.Count; i++)
-                   {
-                       print("Material " + i + ": " + FetchProductsProperties.materialValues[i]);
-                   }
-                   for (int i = 0; i < FetchProductsProperties.colourValues.Count; i++)
-                   {
-                       print("Colour " + i + ": " + FetchProductsProperties.colourValues[i]);
-                   }
-
-                    for (int i = 0; i < FetchProductsProperties.conditionValues.Count; i++)
-                    {
-                        print("Condition " + i + ": " + FetchProductsProperties.conditionValues[i]);
-                    }*/
-
                      filterButtonPressed = true;
                     FilteringResults.sizeSelected = FetchProductsProperties.sizeValues[sizeIndex];
                     FilteringResults.materialSelected = FetchProductsProperties.materialValues[materialIndex];

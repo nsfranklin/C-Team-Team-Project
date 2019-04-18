@@ -2955,13 +2955,14 @@ GameObject:
   - component: {fileID: 438425871}
   - component: {fileID: 438425870}
   - component: {fileID: 438425869}
+  - component: {fileID: 438425872}
   m_Layer: 0
   m_Name: PreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &438425868
 Transform:
   m_ObjectHideFlags: 0
@@ -3036,6 +3037,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438425867}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &438425872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438425867}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8820368256e0b2f4e94167d8af8eceab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizes: {fileID: 0}
+  materials: {fileID: 0}
+  colours: {fileID: 0}
+  condition: {fileID: 0}
+  sex: {fileID: 0}
+  brands: {fileID: 0}
+  checkOutPanel: {fileID: 0}
+  confirmationPopUp: {fileID: 0}
+  itemPanelOnBasket: {fileID: 0}
+  previousPageButton: {fileID: 438425867}
+  filterPrint: {fileID: 0}
 --- !u!1 &440555073
 GameObject:
   m_ObjectHideFlags: 0

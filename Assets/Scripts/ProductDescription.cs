@@ -46,8 +46,9 @@ public class ProductDescription : MonoBehaviour
     {
         try
         {
+            connection.Close();
             connection.Open();
-            print("Connection opened! ");
+            print("Connection for selected product is opened! ");
             string query = "select * from cTeamTeamProjectDatabase.Product where ListingID=@listingID;";
             command = new MySqlCommand(query, connection);
 
