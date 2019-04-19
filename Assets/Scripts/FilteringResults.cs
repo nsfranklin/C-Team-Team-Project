@@ -68,7 +68,6 @@ public class FilteringResults :MonoBehaviour
         int index = 0;
         try
         {
-            print("TEST 1");
             connection.Open();
             print("Connection for fetchProducts() method is open ");
 

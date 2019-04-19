@@ -19,6 +19,8 @@ public class RaycastClick : MonoBehaviour
     public GameObject itemPanelOnBasket;
     public GameObject previousPageButton;
     public Text filterPrint;
+    public Material mat1, mat2, mat3, mat4, mat5, mat6, mat7, mat8, mat9, mat10, mat11, mat12, mat13, mat14, mat15, mat16;
+    public GameObject button1, button2, button3,button4;
 
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
     MySqlCommand command;
@@ -32,10 +34,15 @@ public class RaycastClick : MonoBehaviour
     int conditionIndex = 0;
     int brandIndex = 0;
     int sexIndex = 0;
+    int pageIndex = 0;
+    List<Material> materialsList;
+
     FetchProductsProperties fetch = new FetchProductsProperties();
     FilteringResults productsFilter = new FilteringResults();
     void Start()
     {
+        materialsList = new List<Material>(){mat1,mat2,mat3,mat4,mat5,mat6,mat7,mat8,mat9,mat10,mat11,mat12,mat13,mat14,mat15,mat16};
+        buttonsMaterialSet();
         if (FilteringResults.limitation > 0)
             productsFilter.showButton(previousPageButton);
         else
@@ -216,11 +223,13 @@ public class RaycastClick : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     productsFilter.nextPage();
-                    //productsFilter.fetchProducts();
+                    buttonsMaterialSet();
                     if (FilteringResults.limitation > 0)
                     {
                         productsFilter.showButton(previousPageButton);
                     }
+                    print(FilteringResults.limitation);
+                    print("Page Index: "+pageIndex);
                 }
             }
 
@@ -229,12 +238,13 @@ public class RaycastClick : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     productsFilter.previousPage();
-
+                    buttonsMaterialSetDecrease();
                     if (FilteringResults.limitation <= 0)
                     {
                         productsFilter.hideButton(previousPageButton);
-                        //previousPageButton.gameObject.SetActive(false);         // SOLVE THIS !!
                     }
+                    print(FilteringResults.limitation);
+                    print("Page Index: " + pageIndex);
                 }
             }
 
@@ -600,6 +610,72 @@ public class RaycastClick : MonoBehaviour
                         sex.text = FetchProductsProperties.sexValues[conditionIndex];
                     }
                 }
+            }
+        }
+    }
+
+    /*void starterMaterials()
+    {
+        button1.GetComponent<Renderer>().material = mat1;
+        button2.GetComponent<Renderer>().material = mat2;
+        button3.GetComponent<Renderer>().material = mat3;
+        button4.GetComponent<Renderer>().material = mat4;
+    }*/
+    void buttonsMaterialSet()
+    {
+        if (FilteringResults.limitation <= 0)
+        {
+            button1.GetComponent<Renderer>().material = materialsList[0];
+            button2.GetComponent<Renderer>().material = materialsList[1];
+            button3.GetComponent<Renderer>().material = materialsList[2];
+            button4.GetComponent<Renderer>().material = materialsList[3];
+        }
+        else if (FilteringResults.limitation !=0)
+        {
+            if (pageIndex < materialsList.Count-1)
+            {
+                pageIndex = pageIndex + 4;
+                button1.GetComponent<Renderer>().material = materialsList[pageIndex];
+                button2.GetComponent<Renderer>().material = materialsList[pageIndex+1];
+                button3.GetComponent<Renderer>().material = materialsList[pageIndex +2];
+                button4.GetComponent<Renderer>().material = materialsList[pageIndex +3];
+            }
+            else
+            {
+                pageIndex = 0;
+                button1.GetComponent<Renderer>().material = materialsList[0];
+                button2.GetComponent<Renderer>().material = materialsList[1];
+                button3.GetComponent<Renderer>().material = materialsList[2];
+                button4.GetComponent<Renderer>().material = materialsList[3];
+            }
+        }
+    }
+    void buttonsMaterialSetDecrease()
+    {
+        if (FilteringResults.limitation <= 0)
+        {
+            button1.GetComponent<Renderer>().material = materialsList[0];
+            button2.GetComponent<Renderer>().material = materialsList[1];
+            button3.GetComponent<Renderer>().material = materialsList[2];
+            button4.GetComponent<Renderer>().material = materialsList[3];
+        }
+        else if (FilteringResults.limitation != 0)
+        {
+            if (pageIndex >0)
+            {
+                pageIndex = pageIndex-4;
+                button1.GetComponent<Renderer>().material = materialsList[pageIndex];
+                button2.GetComponent<Renderer>().material = materialsList[pageIndex + 1];
+                button3.GetComponent<Renderer>().material = materialsList[pageIndex + 2];
+                button4.GetComponent<Renderer>().material = materialsList[pageIndex + 3];
+            }
+            else
+            {
+                pageIndex = materialsList.Count - 1;
+                button1.GetComponent<Renderer>().material = materialsList[0];
+                button2.GetComponent<Renderer>().material = materialsList[1];
+                button3.GetComponent<Renderer>().material = materialsList[2];
+                button4.GetComponent<Renderer>().material = materialsList[3];
             }
         }
     }
