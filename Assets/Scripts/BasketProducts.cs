@@ -12,6 +12,10 @@ public class BasketProducts : MonoBehaviour
     public Text listingId;
     public Text productName;
     public Text productPrice;
+    public Text sortCode;
+    public Text accountNumber;
+    public Text payeeName;
+    public Text priceToPay;
 
     public static string db_connection = "server=cteamteamprojectdatabase.csed5aholavi.eu-west-2.rds.amazonaws.com;" + "uid=vruser;" + "pwd=9ZxgnmXHSIdYIsK5qoGm;" + "database=cTeamTeamProjectDatabase;";
     public static MySqlCommand command;
@@ -21,19 +25,20 @@ public class BasketProducts : MonoBehaviour
     void Start()
     {
         getData();
+        cardDetails();
     }
 
     public void getData()
     {
         try
         {
+            connection.Close();
             connection.Open();
             print("Connection opened! ");
 
             string query = "select ListingID, Name, Price from cTeamTeamProjectDatabase.Product where ListingID="+GameManager.selectedListingID+";";       //in (select UserID from Basket where UserID=@userid);";
             command = new MySqlCommand(query, connection);
 
-           // command.Parameters.AddWithValue("@userid", GameManager.loginUserID);
             read = command.ExecuteReader();
 
              while (read.Read())
@@ -51,6 +56,36 @@ public class BasketProducts : MonoBehaviour
         connection.Close();
         print("Connection closed! ");
        // print("Connection still open!! ");
+    }
+
+    public void cardDetails()
+    {
+        priceToPay.text = productPrice.text;
+        try
+        {
+            connection.Close();
+            connection.Open();
+            print("Connection opened! ");
+
+            string query = "SELECT * FROM cTeamTeamProjectDatabase.PayeeInformation where UserID = "+GameManager.loginUserID+";";       //in (select UserID from Basket where UserID=@userid);";
+            command = new MySqlCommand(query, connection);
+
+            read = command.ExecuteReader();
+
+            while (read.Read())
+            {
+                sortCode.text = read.GetValue(1).ToString();
+                accountNumber.text = read.GetValue(2).ToString();
+                payeeName.text = read.GetValue(3).ToString();
+            }
+        }
+        catch (MySqlException exception)
+        {
+            print("Error" + exception.ToString());
+        }
+        read.Close();
+        connection.Close();
+        print("Connection closed! ");
     }
 
     //METHOD WHICH REGISTER AN ORDER FROM BASKET GUI INTO DATABASE TABLE--

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static string selectedListingID = "63";
     public static string sellerId = "9";
-    public static string loginUserID = "37";
+    public static string loginUserID = "8";
     public static string modelToLoad;
 
     void Awake()
